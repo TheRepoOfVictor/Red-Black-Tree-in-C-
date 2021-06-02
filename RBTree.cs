@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Diagnostics;
 
-namespace RBTree
+namespace Testing
 {
     public class RBTree
     {
@@ -410,8 +410,12 @@ namespace RBTree
             Node child = n.Right;
             Node parent = n.Parent;
             n.Right = child.Left;
+            if(n.Right != null)
+            {
+                n.Right.Parent = n;
+            }
 
-            if(parent == null)
+            if (parent == null)
             {
                 root = child;
                 child.Parent = null;
@@ -435,6 +439,10 @@ namespace RBTree
             Node child = n.Left;
             Node parent = n.Parent;
             n.Left = child.Right;
+            if(n.Left != null)
+            {
+                n.Left.Parent = n;
+            }
 
             if (parent == null)
             {
